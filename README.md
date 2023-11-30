@@ -1,5 +1,10 @@
 # Easy-M3U-Playlist-Creator
+
+![bmac](https://github.com/imrsaleh/Easy-M3U-Playlist-Creator/assets/119083621/0b4753ec-e917-4146-a2b0-3f0f6300533b)
+
+
 Overview:
+
  in the absence of freely available software performing the same task
 I am now providing this tool to you for free.
 
@@ -12,7 +17,7 @@ If your playlist channels contains drm, it is preferable to use Kodi or OTTNavig
 
 example1: simple channel
 
-![nodrm](https://github.com/imrsaleh/Easy-M3U-Playlist-Creator/assets/119083621/2844e4cd-4e5f-4450-8b11-e537e238b06f)
+[<img src="https://github.com/imrsaleh/Easy-M3U-Playlist-Creator/assets/119083621/2844e4cd-4e5f-4450-8b11-e537e238b06f">](https://www.buymeacoffee.com/aburshrsh9z)
 
 example2: channel with clearkey drm
 
