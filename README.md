@@ -1,6 +1,6 @@
 # Easy-M3U-Playlist-Creator
 
-[<img src="https://github.com/imrsaleh/Easy-M3U-Playlist-Creator/assets/119083621/0b4753ec-e917-4146-a2b0-3f0f6300533b">](https://www.buymeacoffee.com/aburshrsh9z)
+[<img width="300px" src="https://github.com/imrsaleh/Easy-M3U-Playlist-Creator/assets/119083621/0b4753ec-e917-4146-a2b0-3f0f6300533b">](https://www.buymeacoffee.com/aburshrsh9z)
 
 
 Overview:
