@@ -17,7 +17,7 @@ If your playlist channels contains drm, it is preferable to use Kodi or OTTNavig
 
 example1: simple channel
 
-[<img src="https://github.com/imrsaleh/Easy-M3U-Playlist-Creator/assets/119083621/2844e4cd-4e5f-4450-8b11-e537e238b06f">](https://www.buymeacoffee.com/aburshrsh9z)
+![bmac](https://github.com/imrsaleh/Easy-M3U-Playlist-Creator/assets/119083621/2844e4cd-4e5f-4450-8b11-e537e238b06f)
 
 example2: channel with clearkey drm
 
