@@ -17,15 +17,15 @@ If your playlist channels contains drm, it is preferable to use Kodi or OTTNavig
 
 example1: simple channel
 
-![bmac](https://github.com/imrsaleh/Easy-M3U-Playlist-Creator/assets/119083621/2844e4cd-4e5f-4450-8b11-e537e238b06f)
+![1](https://github.com/imrsaleh/Easy-M3U-Playlist-Creator/assets/119083621/69d92362-7696-4b80-a5c1-07c23591d2f8)
 
 example2: channel with clearkey drm
 
-![drm](https://github.com/imrsaleh/Easy-M3U-Playlist-Creator/assets/119083621/a4f674de-c661-4ad5-a09c-1bb5aa5e7176)
+![2](https://github.com/imrsaleh/Easy-M3U-Playlist-Creator/assets/119083621/c1e6c620-f525-4925-93a1-417aa3c5f008)
 
 m3u file from inside:
 
-![inside](https://github.com/imrsaleh/Easy-M3U-Playlist-Creator/assets/119083621/ee641c80-e30d-4367-a661-8613f0554872)
+![3](https://github.com/imrsaleh/Easy-M3U-Playlist-Creator/assets/119083621/04555b70-9952-4fbe-bd4d-13ef8b1cad83)
 
 
 --------------------------------------------------------------
