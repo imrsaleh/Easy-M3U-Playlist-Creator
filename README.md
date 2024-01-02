@@ -44,6 +44,8 @@ m3u file from inside:
 
 +TVG Name for EPG
 
++TVG shift for EPG time
+
 +Logo Link
 
 +License Type
@@ -82,7 +84,7 @@ How to Use:
 
 1-Channel Information:
 
-Fill in the required fields for each channel. Fields like License Type, License Key, and Manifest Type are for DRM configuration
+Fill in the required fields for each channel. Fields like License Type, License Key are for DRM configuration
 
 2-Clear Fields:
 
@@ -104,4 +106,4 @@ Ensure that required fields are filled before generating the M3U file.
 
 Support:
 
-For any inquiries or issues, contact me on Discord: @bigwolf_
+ contact me on Discord: @bigwolf_ or create new issue
