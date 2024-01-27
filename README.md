@@ -102,8 +102,6 @@ Note:
 The application automatically adjusts the M3U file format based on the provided information,
 Ensure that required fields are filled before generating the M3U file.
 
---------------------------------------------------------------
 
-Support:
 
- contact me on Discord: @bigwolf_ or create new issue
+
