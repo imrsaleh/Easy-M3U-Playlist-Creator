@@ -72,7 +72,7 @@ def on_generate_m3u():
             f.write("#EXTM3U\n")
             for channel in channels:
                 if channel['license_type'] and channel['license_key']:
-                    f.write(f'#KODIPROP:inputstream=inputstream.adaptive\n')
+                    f.write(f'#KODIPROP:inputstream.adaptive\n')
                     f.write(f'#KODIPROP:inputstream.adaptive.license_type={channel["license_type"]}\n')
                     f.write(f'#KODIPROP:inputstream.adaptive.license_key={channel["license_key"]}\n')
                 if channel['manifest_type']:
