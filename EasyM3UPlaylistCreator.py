@@ -100,11 +100,7 @@ def clear_entries():
     license_type_var.set("")  
     entry_license_key.delete(0, tk.END)
     manifest_type_var.set("")  
-
-def open_url1():
-    url = "https://www.buymeacoffee.com/aburshrsh9z"
-    webbrowser.open(url)
-    
+ 
 def open_url2():
     url = "https://github.com/imrsaleh/Easy-M3U-Playlist-Creator"
     webbrowser.open(url)
@@ -205,9 +201,7 @@ channel_count_label.pack(pady=10)
 # إعداد زر Generate M3U
 button_generate_m3u = tk.Button(window, text="             Generate M3U             ", command=on_generate_m3u)
 button_generate_m3u.pack(padx=10)
-
-button1 = tk.Button(window, text="     Buy me a coffee     ", command=open_url1, bg="orange")
-button1.pack(side="left", pady=20)
+
 
 button2 = tk.Button(window, text="    Check for updates on Github.com     ", command=open_url2, fg="white", bg="black")
 button2.pack(side="right", pady=20)
