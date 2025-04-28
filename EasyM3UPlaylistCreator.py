@@ -1,7 +1,6 @@
 import tkinter as tk
 from tkinter import ttk, filedialog, messagebox
 import webbrowser
-import re
 from urllib.parse import urlparse
 
 class ChannelManager:
@@ -36,7 +35,9 @@ class ChannelManager:
             ("Channel Link", "entry_channel_link", 3, 0),
             ("Manifest Type", "manifest_type_var", 3, 2),
             ("License Key", "entry_license_key", 4, 0),
-            ("License Type", "license_type_var", 4, 2)
+            ("License Type", "license_type_var", 4, 2),
+            ("User-Agent", "http_headers_type_var1", 5, 0),
+            ("Referer", "http_headers_type_var2", 5, 2),
         ]
 
         for text, var, row, col in fields:
@@ -74,10 +75,10 @@ class ChannelManager:
 
     def setup_buttons(self, parent):
         buttons = [
-            ("Add Channel", self.on_add_channel, 5, 1),
-            ("Clear Fields", self.on_clear_fields, 5, 3),
+            ("Add Channel", self.on_add_channel, 6, 1),
+            ("Clear Fields", self.on_clear_fields, 6, 3),
             ("Generate M3U", self.on_generate_m3u, 6, 2),
-            ("GitHub", self.open_github, 6, 4)
+            ("GitHub", self.open_github, 6, 4),
         ]
 
         for text, command, row, col in buttons:
@@ -139,7 +140,9 @@ class ChannelManager:
             "logo_link": self.entry_logo_link.get(),
             "license_type": self.license_type_var.get(),
             "license_key": self.entry_license_key.get(),
-            "manifest_type": self.manifest_type_var.get()
+            "manifest_type": self.manifest_type_var.get(),
+            "user_agent": self.http_headers_type_var1.get(),
+            "referrer": self.http_headers_type_var2.get()
         }
         
         self.channels.append(channel)
@@ -148,7 +151,7 @@ class ChannelManager:
     def on_clear_fields(self):
         for widget in [self.entry_channel_name, self.entry_group_title, self.entry_channel_link,
                       self.entry_tvg_id, self.entry_tvg_name, self.entry_logo_link,
-                      self.entry_license_key]:
+                      self.entry_license_key, self.http_headers_type_var1, self.http_headers_type_var2]:  
             widget.delete(0, tk.END)
         self.combo_tvg_shift.set("")
         self.license_type_var.set("")
@@ -171,14 +174,21 @@ class ChannelManager:
             with open(file_path, "w", encoding="utf-8") as f:
                 f.write("#EXTM3U\n")
                 for channel in self.channels:
-                    self.write_kodiprops(f, channel)
                     self.write_extinf(f, channel)
+                    self.write_kodiprops(f, channel)
                     f.write(f"{channel['channel_link']}\n")
             messagebox.showinfo("Success", "Playlist generated successfully")
         except Exception as e:
             messagebox.showerror("Error", f"Failed to save file:\n{str(e)}")
 
     def write_kodiprops(self, f, channel):
+        # Write HTTP headers if provided
+        if channel.get('user_agent'):
+            f.write(f'#EXTVLCOPT:http-user-agent={channel["user_agent"]}\n')
+        if channel.get('referrer'):
+            f.write(f'#EXTVLCOPT:http-referrer={channel["referrer"]}\n')
+        
+        # Write license and manifest type if provided
         if channel['license_type'] and channel['license_key']:
             f.write("#KODIPROP:inputstream.adaptive.license_type="
                    f"{channel['license_type']}\n")
