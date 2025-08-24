@@ -26,16 +26,13 @@ class ChannelManager:
 
         # Input fields setup
         fields = [
-            ("Channel Name", "entry_channel_name", 0, 0),
+            ("*Channel Name", "entry_channel_name", 0, 0),
             ("Group Title", "entry_group_title", 0, 2),
             ("EPG TVG Name", "entry_tvg_name", 1, 0),
-            ("EPG Time Shift", "combo_tvg_shift", 1, 2),
             ("EPG TVG ID", "entry_tvg_id", 2, 0),
             ("Logo Link", "entry_logo_link", 2, 2),
-            ("Channel Link", "entry_channel_link", 3, 0),
-            ("Manifest Type", "manifest_type_var", 3, 2),
+            ("*Channel Link", "entry_channel_link", 3, 0),
             ("License Key", "entry_license_key", 4, 0),
-            ("License Type", "license_type_var", 4, 2),
             ("User-Agent", "http_headers_type_var1", 5, 0),
             ("Referer", "http_headers_type_var2", 5, 2),
         ]
@@ -54,12 +51,15 @@ class ChannelManager:
 
     def setup_comboboxes(self, parent):
         # TVG Shift combobox
+        tk.Label(parent, text="EPG Time Shift").grid(row=1, column=2, padx=5, pady=5, sticky="w")
         tvg_shift = ttk.Combobox(parent, values=[""] + [str(i) for i in range(-12, 13)], 
                                font=("Arial", 10), width=28, state="readonly")
         tvg_shift.grid(row=1, column=3, padx=5, pady=5)
         self.combo_tvg_shift = tvg_shift
 
         # License Type combobox
+        tk.Label(parent, text="Manifest Type").grid(row=3, column=2, padx=5, pady=5, sticky="w")
+        tk.Label(parent, text="License Type").grid(row=4, column=2, padx=5, pady=5, sticky="w")
         license_types = ["", "clearkey", "com.widevine.alpha", 
                         "com.microsoft.playready", "org.w3.clearkey"]
         self.license_type_var = tk.StringVar()
@@ -114,17 +114,29 @@ class ChannelManager:
     def on_add_channel(self):
         required_fields = {
             "Channel Name": self.entry_channel_name.get(),
-            "Group Title": self.entry_group_title.get(),
+            # "Group Title": self.entry_group_title.get(),
             "Channel Link": self.entry_channel_link.get()
         }
 
         if not all(required_fields.values()):
-            messagebox.showerror("Error", "Please fill all required fields")
+            messagebox.showerror("Error", "required fields (Channel Name / Channel Link)")
             return
 
         if not self.validate_url(self.entry_channel_link.get()):
-            messagebox.showerror("Error", "Invalid Channel Link URL")
+            messagebox.showerror("Error", "Invalid Channel URL http://..")
             return
+        
+        referercheck = self.http_headers_type_var2.get()
+        if referercheck:
+            if not self.validate_url(referercheck):
+                messagebox.showerror("Error", "Invalid Referer URL http://..")
+                return
+        
+        logocheck = self.entry_logo_link.get()
+        if logocheck:
+            if not self.validate_url(logocheck):
+                messagebox.showerror("Error", "Invalid logo URL http://..")
+                return
 
         if self.license_type_var.get() and not self.entry_license_key.get():
             messagebox.showerror("Error", "License type requires a license key")
@@ -132,7 +144,7 @@ class ChannelManager:
 
         channel = {
             "channel_name": required_fields["Channel Name"],
-            "group_title": required_fields["Group Title"],
+            "group_title": self.entry_group_title.get(),
             "channel_link": required_fields["Channel Link"],
             "tvg_id": self.entry_tvg_id.get(),
             "tvg_name": self.entry_tvg_name.get(),
